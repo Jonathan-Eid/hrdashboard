@@ -9,5 +9,11 @@ router.get('/', function(req, res, next) {
 
 
 
+// Get all departments
+// Put department
+// Delete Department
+// Update Department
+
+
 module.exports = router;
   
