@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  
+  client:
+      build: 
+        context: ./client
+        dockerfile: Dockerfile
+        args: 
+          REACT_APP_STRAPI_URL: ${STRAPI_URL}
+          REACT_APP_STRAPI_AUTH_TOKEN: ${STRAPI_AUTH_TOKEN}
+      ports:
+        - 5173:5173
+      volumes:
+        - ./client:/client
+        - /node_modules
+      environment:
+        - CHOKIDAR_USEPOLLING=true
+
+
+  server:
+    build: 
+        context: ./server
+        dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./server:/server
+      - /node_modules
+    
+
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: theta
+      POSTGRES_USER: theta
+      POSTGRES_DB: theta
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
