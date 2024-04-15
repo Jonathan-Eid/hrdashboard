@@ -13,7 +13,10 @@ cd hrdashboard
 ```
 
 - Start project
-```docker-compose up```
+```
+docker-compose build
+docker-compose up
+```
 
 - Navigate to ```localhost:5173```
 
