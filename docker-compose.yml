@@ -6,9 +6,6 @@ services:
       build: 
         context: ./client
         dockerfile: Dockerfile
-        args: 
-          REACT_APP_STRAPI_URL: ${STRAPI_URL}
-          REACT_APP_STRAPI_AUTH_TOKEN: ${STRAPI_AUTH_TOKEN}
       ports:
         - 5173:5173
       volumes:

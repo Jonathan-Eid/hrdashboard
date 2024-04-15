@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import thetaLogo from '/theta.svg'
 import 'bulma/css/bulma.min.css';
@@ -12,24 +12,19 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   const [employeeResponse, setEmployeeResponse] = useState<EmployeeResponse | undefined>(undefined)
+  const [page, setPage] = useState<number>(0)
 
   const [departments, setDepartments] = useState<any | undefined>([])
   const [positions, setPositions] = useState<any | undefined>([])
 
-  const [page, setPage] = useState<number>(0)
 
   const [departmentFilter, setDepartmentFilter] = useState<string>("")
-
   const [statusFilter, setStatusFilter] = useState<string>("")
-
 
   const [employeeAction, setEmployeeAction] = useState<string | undefined>(undefined)
   const [selectedEmployee, setSelectedEmployee] = useState<any>({})
 
   const [refreshState, setRefreshState] = useState(1)
-
-  const [ getConfirmation, Confirmation ] = useConfirm()
-
 
   const defaultForm = {
     firstName: '',
@@ -41,6 +36,9 @@ function App() {
   }
 
   const [formState, setFormState] = useState<any>(defaultForm)
+
+  const [ getConfirmation, Confirmation ] = useConfirm()
+
 
   const handleChange = (e: { target: { name: any; value: any; }; }) => {
       const { name, value } = e.target;
@@ -57,7 +55,6 @@ function App() {
       
       (async () => {
         const employeeData = await getEmployees(departmentFilter,statusFilter,page)
-        console.log(employeeData)
         setEmployeeResponse(employeeData)
 
         const departments = await getDepartments()
@@ -89,28 +86,18 @@ function App() {
   },[departmentFilter,statusFilter,page,isLoggedIn,refreshState])
 
 
-  async function handleSubmit(e: any) {
-    e.preventDefault();
-    const form = new FormData(e.currentTarget);
-    const firstName = form.get("firstName");
-    const lastName = form.get("lastName");  
-    const salary = form.get("salary");
-  }
+
 
   function isValidName(name: any){
     return name && name.length >= 2 && name.length <= 20
   }
-
 
   function isValidSalary(salary: any){
     return salary && salary >= 1000 && salary <= 1000000
   }
 
   function isValidForm(){
-
     return isValidName(formState.firstName) && isValidName(formState.lastName) && isValidSalary(formState.salary)
-
-    
   }
 
 
@@ -222,7 +209,7 @@ function App() {
               </table>
               <div className='columns'>
                 <div style={{marginRight: "50px"}} className='subtitle'>Page: {employeeResponse.currentPage+1} / {employeeResponse.totalPages > 0 ? employeeResponse.totalPages : 1 } </div>
-                <button style={{marginRight: "5px"}} disabled={page==0} className='button' onClick={()=>{setPage(page-1)}}>Back</button>
+                <button style={{marginRight: "5px"}} disabled={page<=0} className='button' onClick={()=>{setPage(page-1)}}>Back</button>
                 <button className='button' disabled={page>=employeeResponse.totalPages-1} onClick={()=>{setPage(page+1)}}>Next</button>
 
               </div>
