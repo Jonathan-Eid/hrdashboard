@@ -1,7 +1,7 @@
 ### Prerequisities
 
 - Install Docker & Docker Compose
-- Yarn
+- Install Yarn
 
 <br>
 
@@ -24,10 +24,19 @@ cd ..
 - Start project
 ```
 docker-compose build
-docker-compose up
+docker-compose up -d
 ```
 
 - Navigate to ```localhost:5173```
+
+### Teardown
+
+```
+docker-compose down
+cd ..
+sudo rm -rf hrdashboard
+```
+
 
 
 ### Documentation
