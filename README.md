@@ -1,7 +1,7 @@
 ### Prerequisities
 
-- Install Docker & Docker Compose
-- Install Yarn
+- Install [Docker & Docker Compose](https://docs.docker.com/get-docker/)
+- Install [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/)
 
 <br>
 
