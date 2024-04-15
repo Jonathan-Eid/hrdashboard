@@ -1,19 +1,12 @@
 var express = require('express');
 var router = express.Router();
+const position = require("../controllers/position.controller")
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+// var apicache = require('apicache')
+// var cache = apicache.middleware
 
-
-// Get all positions
-// Put position
-// Delete position
-// Update position
- 
-
-
+/* GET positions. */
+router.get('/', position.findAll );
 
 
 module.exports = router;

@@ -3,13 +3,15 @@ const Department = db.department
 
 exports.findAll = (req, res) => {
   
-    Department.findAll()
+    Department.findAll({
+        attributes: ["id", "name"],
+    })
     .then((departments) => {
         res.send(departments)
     })
     .catch((err)=>{
         res.status(500).send(({
-            message:err.message
+            message:err
         }))
     })
     

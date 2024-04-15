@@ -1,19 +1,11 @@
 var express = require('express');
 var router = express.Router();
+const department = require("../controllers/department.controller")
+// var apicache = require('apicache')
+// var cache = apicache.middleware
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
-
-
-
-
-// Get all departments
-// Put department
-// Delete Department
-// Update Department
-
+/* GET departments. */
+router.get('/', department.findAll );
 
 module.exports = router;
   

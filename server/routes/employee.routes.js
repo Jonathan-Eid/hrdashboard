@@ -1,18 +1,19 @@
 var express = require('express');
 var router = express.Router();
+var apicache = require('apicache')
+var cache = apicache.middleware
 
 const employee = require("../controllers/employee.controller")
 
 
 
-/* GET users listing. */
-router.get('/', employee.findAll );
-
-
-// Get all Employees - filter filter by department or status
-// Add employees - 
+/* GET employees. */
+router.get('/', cache('1 hour'), employee.findAll);
+router.post('/', employee.create);
+router.put('/', employee.update);
+router.delete('/', employee.delete);
 
 
 
 module.exports = router;
-  
+   

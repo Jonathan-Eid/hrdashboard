@@ -11,8 +11,16 @@ db.Sequelize = Sequelize;
 db.employee = require("./employee.model.js")(sequelize,Sequelize);
 db.department = require("./department.model.js")(sequelize,Sequelize);
 db.position = require("./position.model.js")(sequelize,Sequelize);
-db.department.hasMany(db.employee)
-db.position.hasMany(db.employee)
+db.department.hasMany(db.employee, {
+  foreignKey: {
+    allowNull: false,
+  },
+})
+db.position.hasMany(db.employee, {
+  foreignKey: {
+    allowNull: false,
+  },
+})
 db.employee.belongsTo(db.department)
 db.employee.belongsTo(db.position)
 
@@ -77,14 +85,14 @@ const initDb = ( async () =>{
         firstName: employees[i].firstName,
         lastName: employees[i].lastName,
         salary: employees[i].salary,
-        status: employees[i].status 
+        status: employees[i].status,
+        departmentId: department.id,
+        positionId: position.id
       }
     })
 
     if (created){
       console.log(`Employee: "${employee.firstName} ${employee.lastName}" created`)
-      department.addEmployee(employee)
-      position.addEmployee(employee)
     }
 
   }
