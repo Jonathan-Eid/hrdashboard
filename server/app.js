@@ -6,7 +6,6 @@ var bodyParser = require('body-parser')
 var logger = require('morgan');
 
 
-
 var departmentsRouter = require('./routes/department.routes');
 var positionsRouter = require('./routes/position.routes');
 var employeesRouter = require('./routes/employee.routes'); 

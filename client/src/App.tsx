@@ -310,7 +310,7 @@ function App() {
                                                 setFormState(defaultForm)
                                                 setEmployeeAction(undefined)
                                               }}>Save</button>}
-                {employeeAction == "edit" && <button className={isValidForm() && !isEqualWith(formState,selectedEmployee,cmpStr2Num) ? 'button is-success' : "button is-dark"} disabled={!isValidForm()} 
+                {employeeAction == "edit" && <button className={isValidForm() && !isEqualWith(formState,selectedEmployee,cmpStr2Num) ? 'button is-success' : "button is-dark"} disabled={!isValidForm() || isEqualWith(formState,selectedEmployee,cmpStr2Num)} 
                                               onClick={async () => {
                                                 await updateEmployee(formState)
                                                 setRefreshState(refreshState+1)
