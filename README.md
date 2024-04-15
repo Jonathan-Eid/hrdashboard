@@ -1,6 +1,7 @@
 ### Prerequisities
 
 - Install Docker & Docker Compose
+- Yarn
 
 <br>
 
@@ -10,6 +11,9 @@
 ```
 git clone https://github.com/Jonathan-Eid/hrdashboard.git
 cd hrdashboard
+cd client && yarn
+cd ../server && yarn
+cd ..
 ```
 
 - Start project
