@@ -1,8 +1,6 @@
 ### Prerequisities
 
 - Install [Docker & Docker Compose](https://docs.docker.com/get-docker/)
-- Install [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/)
-
 <br>
 
 ### Usage
@@ -13,17 +11,8 @@ git clone https://github.com/Jonathan-Eid/hrdashboard.git
 cd hrdashboard
 ```
 
-- Install Dependencies
-```
-cd client && yarn
-cd ../server && yarn
-cd ..
-```
-
-
 - Start project
 ```
-docker-compose build
 docker-compose up -d
 ```
 
