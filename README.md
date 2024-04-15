@@ -11,10 +11,15 @@
 ```
 git clone https://github.com/Jonathan-Eid/hrdashboard.git
 cd hrdashboard
+```
+
+- Install Dependencies
+```
 cd client && yarn
 cd ../server && yarn
 cd ..
 ```
+
 
 - Start project
 ```
